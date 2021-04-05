@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="theme-color" content="#292a2b" />
+		<title>Fashion Feet</title>
+	<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shojumaru&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@1,700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@700&display=swap" rel="stylesheet">	
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Piedra&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+		<link rel="stylesheet" 	                                                                            href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css"/>
+		<link rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Roboto&display=swap"/>
+		
+		 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+				
+		<link rel="stylesheet" href="../stylesheets/main.css" />
+		<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<style>
+			nav ul li a{
+				display:block;
+			}
+			nav ul li a:hover{
+				border: 1.5px solid #78640c;
+			}
+			
+			nav>ul li{
+				width:220px;
+				position:relative;	
+				text-align:center;
+			}
+			@media(min-width: 981px){
+				nav>ul>li.dropdown>ul.subMenu{
+				position:absolute;
+				top:0;
+				left:100%;
+				display:none;
+				background-color: #333;
+			}
+				nav>ul>li.dropdown:hover>ul.subMenu{
+				display:block;
+				}
+			}
+			@media(max-width: 980px){
+				nav>ul>li.dropdown>ul.subMenu{
+				position:absolute;
+				bottom: 100%;
+				/* left:100%; */
+				display:none;
+				background-color: #333;
+			}
+				nav>ul>li.dropdown:hover>ul.subMenu{
+					display:block;
+					padding: 20px;
+				}
+			}
+			
+		</style>
+	</head>
+	<body>
+
+		<aside class="sidebar" style="z-index: 10000;">
+			<nav>
+				<ul class="sidebar__nav">
+					<li>
+						<a href="/maleshooes" class="sidebar__nav__link">
+							<i class="fas fa-house-user"></i>
+							<span class="sidebar__nav__text">Home</span>
+						</a>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="sidebar__nav__link">                    													<i class="fa fa-list-alt" aria-hidden="true"></i>
+							<span class="sidebar__nav__text">Category</span>
+						</a>
+						<ul class="subMenu">
+						<li>
+						<a href="/spoorts" class="sidebar__nav__link">
+							<span class="sidebar__nav__text subMenu">Sports</span>
+						</a>
+						</li>
+							<li>
+						<a href="/loofars" class="sidebar__nav__link">
+							<span class="sidebar__nav__text subMenu">Loafers</span>
+						</a>
+					</li>
+							<li>
+						<a href="/foormals" class="sidebar__nav__link">
+							<span class="sidebar__nav__text subMenu">Formals</span>
+						</a>
+						</li>
+						</ul>
+					</li>
+				<% if(!currUser) {  %>	
+				<li>
+			<a href="#" class="sidebar__nav__link" data-toggle="modal" data-target=".bd-example-modal">
+							<i class="fas fa-sign-in-alt"></i>
+							<span class="sidebar__nav__text">Login</span>
+						</a>
+				</li>
+				<li>
+						<a href="/register" class="sidebar__nav__link">
+							<i class="fas fa-user-plus"></i>
+							<span class="sidebar__nav__text">SignUp</span>
+						</a>
+				</li>
+				<% } else{ %>
+				
+					<li>
+						<a href="/MyCart" class="sidebar__nav__link">
+							<i class="mdi mdi-cart"></i>
+							<span class="sidebar__nav__text">Shopping cart</span>
+						</a>
+					</li>
+					<li>
+						<a href="/logout" class="sidebar__nav__link">
+							<i class="fas fa-sign-out-alt"></i>
+							<span class="sidebar__nav__text">Logout</span>
+						</a>
+					</li>
+				<li>
+						<a href="/myaccount/<%=currUser.id%>" class="sidebar__nav__link">
+							<i class="mdi mdi-account-circle"></i>
+							<span class="sidebar__nav__text"><%=currUser.username%></span>
+						</a>
+				</li>
+				<% } %>
+				<li>
+					<a href="/about-us" class="sidebar__nav__link">
+						<i class="fas fa-info-circle"></i>
+						<span class="sidebar__nav__text">About Us</span>
+					</a>
+				</li>	
+				<li>
+					<a href="/contact-us" class="sidebar__nav__link">
+						<i class="fas fa-phone-square-alt"></i>
+						<span class="sidebar__nav__text">Contact Us</span>
+					</a>
+				</li>
+				</ul>
+			</nav>
+		</aside>
+		
+	<nav class="navbar navbar-dark bg-dark" style="z-index: 100; background-color: #ceedf2;">
+  			<a class="navbar-brand text-center" href="/"><i class="fas fa-shoe-prints"></i>
+				 Fashion Feet</a>
+	</nav>
+		
+		
+		<div class="container fmsg ">
+		<% if(error && error.length>0) {%>
+			<div class="alert alert-danger alert-dismissible">
+				<%=error%>
+				 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			</div>
+		<% } if(success && success.length>0) {%>
+			<div class="alert alert-success alert-dismissible">
+				<%=success%>
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			</div>
+		<%}%>	  
+		  </div>
+		
+		 <!-- Login		 -->
+<div class="modal fade bd-example-modal" role="dialog">
+    <div class="modal-dialog modal-full" aria-labelledby="myLargeModalLabel" aria-hidden="true" role="document">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+				<h1 class="modal-title"><strong>Log In</strong></h1>
+                <button type="button" class="close thlike" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="md-body" style="text-align: center;">
+		<form action="/login" method ="POST">
+			<div class="form-group">
+				<input class="form-control login" style="margin: auto auto;"  type="text" name="username" placeholder="username" required>
+			</div>
+			<div class="form-group">
+				<input class="form-control login" style="margin: auto auto;" type="password" name="password" placeholder="password" required>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-outline-info btn-block login" style="margin: auto auto;">Submit</button>
+			</div>
+		</form>
+	<h3 class="text-center lgup" style="color: slateblue;">
+		Not have an Account yet?   <span><strong><a href="/register" style="color: steelblue;">Sign Up</a></strong></span>
+	</h3>
+	<h3 class="text-center lgup" style="color: #e3d8d8;">
+		<span><strong><a href="/forgot" style="color: white;">Forgot Password?</a></strong></span>
+	</h3>
+</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark cls" data-dismiss="modal">close</button>
+            </div>
+        </div>
+	</div>
+		</div>	
+
+		
+				
+<!-- Bootstrap 4		 -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>		  
+<!-- Font awesome 5		 -->
+<script src="https://kit.fontawesome.com/074d5df97d.js" crossorigin="anonymous"></script>
+		
+		<main class="main" style="z-index: 0;">
+	

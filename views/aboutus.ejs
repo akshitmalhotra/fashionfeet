@@ -1,0 +1,351 @@
+<%- include("partials/header")%>
+<style>
+	.jumbotron.about{
+	  margin: 0;
+		top: 0;
+	  width: 100%;
+		height: 320px;
+      color: #2c3e50;
+      background: url("https://i.pinimg.com/originals/a3/1f/8c/a31f8c42109a80bc63439ef354181a77.jpg") ;
+	  text-align:center; 
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		
+    }
+	@media(min-width: 981px){
+		.jumbotron.about{
+			border-radius: 0 0 50% 50% ;
+		}
+	}
+	@media(max-width: 980px){
+		.jumbotron.about{
+			border-radius: 0 0 20% 20% ;
+		}
+	}
+	i.about{
+		font-size: 1.6em;
+		margin: 10px;
+		transition: 0.3s;
+	}
+	i.about:hover{
+		color: #8bdfe8;
+		font-size: 1.8em;
+		
+	}
+	.jumbotron.about h1.about{
+		color: white;
+		font-size: 4em;
+		font-weight: bold;
+		font-family: 'Shojumaru', cursive;
+		text-shadow: 0 1px 6px black;
+	}
+	.jumbotron.about p.about{
+		font-family: 'Playfair Display SC', serif;
+		color: #FFD700;
+		font-weight: bold;
+		font-size: 1.8em;
+		text-shadow: 0 2px 4px black;
+	}
+	img.about{
+		border-radius: 30px;
+	}
+	p.info{
+		color: white;
+		font-weight: 600;
+		text-shadow: 0 2px 4px purple;
+	}
+	.jumbotron.inquire{
+		background: url("https://cdn.benzinga.com/files/imagecache/1024x768xUP/images/story/2012/457207757_0.jpg");
+		background-repeat: no-repeat;
+		background-size: cover;
+		position: relative;
+		background-position: center;
+		height: 400px;
+	}
+	div.inq-cont{
+		border-top: 5px solid #3e96c2;
+		padding: 5px 25px;
+		left: 0;
+		bottom: 0;
+		position: absolute;
+		width: 100%;
+		background: rgba(57, 59, 57,0.3);
+	}
+	h1.wcu{
+		color: #3e96c2;
+		font-weight: bold;
+		text-shadow: 0 2px 4px black;
+		
+	}
+	p.wcu{
+		color: white;
+		text-shadow: 0 2px 4px black;
+	}
+	div.icon-inquire{
+		text-align: center;
+	}
+	i.fas.inq:hover,i.fab.inq:hover{
+		background: #dce7f7;
+		font-size: 3.2em;
+	}
+	i.fas.inq,i.fab.inq{
+		background: #f0efeb;
+		padding: 15px;
+		border: 2px solid black;
+		border-radius: 45px;
+		position: relative;
+		bottom: 65px;
+		color: #54a3c4;
+		font-size: 3em;
+		transition: 0.3s;
+	}
+	p.icon-info{
+		border-right: 2px solid #67a4c9;
+	}
+		.flip-card {
+	border-radius: 30px;
+  background-color: transparent;
+  width: 300px;
+  height: 350px;
+  perspective: 1000px;
+}
+	
+
+.flip-card-inner {
+	border-radius: 30px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+	cursor: pointer;
+}
+
+.flip-card-front, .flip-card-back {
+	border-radius: 30px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+	padding-top: 35px;
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+	@media(min-width: 981px){
+		div.wwd p{
+			line-height: 2;
+		}
+		img.thanks{
+			height:270px;
+			width:500px;
+		}
+	}
+	
+	@media(max-width: 980px){
+		.thankimg{
+			padding-bottom:10px;
+		}
+		div.team{
+			margin-left: 15px;
+		}
+		h2.name{
+			padding-top: 20px;
+			text-decoration: underline;
+			text-align: center;
+		}
+		p.descp{
+			text-align: center;
+			margin-right: 16px;
+		}
+		.jumbotron.about{
+			height: 280px;
+		}
+		.jumbotron.about h1.about{
+		color: white;
+		font-size: 3.2em;
+		font-weight: bold;
+		font-family: 'Shojumaru', cursive;
+		text-shadow: 0 1px 6px black;
+		}
+		.jumbotron.about p.about{
+		font-family: 'Playfair Display SC', serif;
+		color: #FFD700;
+			font-weight: bold;
+		font-size: 1.5em;
+		text-shadow: 0 2px 4px black;
+	}
+		p.wcu{
+		color: white;
+		text-shadow: 0 2px 4px black;
+			font-size: 0.8em;
+		}
+		p.icon-info{
+			margin-left: 5px;
+			border-left: 5px solid #67a4c9;
+		}
+		img.thanks{
+			height:270px;
+			width:100%;
+		}
+	}
+	.thank{
+		background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+	}
+</style> 
+
+<div class="">
+ <div class="jumbotron about">
+    <h1 class="about">About Us</h1>
+    <p class="text-center about">Team work makes the Dream work.</p>
+</div>
+
+<div class="page-wrap main">
+	
+	<div class="wwd mt-5">
+		<h1 class="text-center" style='font-weight: bold; text-decoration: underline;'>What we Do?</h1>
+		<div class="text-center px-2" style="font-family: 'Merienda', cursive;">
+		<p class="">
+			Lorem Ipsum is simply dummy text of the printing and typesetting industry.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<p class="">Why do we use it? <br>
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
+		</div>
+	</div>
+	
+	<div class="jumbotron inquire">
+		<div class="inq-cont">
+			<h1 class="text-center wcu">
+				Why Choose Us
+			</h1>
+			<p class="wcu pb-3">
+				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,It was popularised	
+			</p>
+		</div>
+	</div>
+	
+	<div class="icon-inquire">
+			<div class="row text-center">
+				<div class="col-4"> <i class="fab fa-angellist inq"></i> </div>
+				<div class="col-4"> <i class="fas fa-handshake inq"></i> </div>
+				<div class="col-4"> <i class="fas fa-shipping-fast inq"></i> </div>	
+			</div>
+	</div>
+	
+		<div class="text-center">
+			<div class="row">
+				<div class="col-lg-4">
+					<p class="px-4 text-center icon-info">
+					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem 				Ipsum has been the industry's standard dummy text ever since the 1500s,It was popularised 	
+					</p>
+				</div>
+			
+			<div class="col-lg-4">
+					<p class="px-4 text-center icon-info">
+					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem 				Ipsum has been the industry's standard dummy text ever since the 1500s,It was popularised 	
+					</p>
+			</div>
+			<div class="col-lg-4">
+					<p class="px-4 text-center icon-info">
+					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem 				Ipsum has been the industry's standard dummy text ever since the 1500s,It was popularised 	
+					</p>
+			</div>
+			</div>	
+		</div>
+	
+	<h1 class="mt-5 text-center" style='font-weight: bold; text-decoration: underline;'>Our Team</h1>
+<div class="mt-3 team mb-5">	
+	<div class="row d-flex justify-content-around"> 
+   <div class="col-lg-4">
+<div class="flip-card team">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img class="about" src="https://res.cloudinary.com/dzzb5loan/image/upload/v1589957829/tavgphegfqfveojppn0s.jpg" alt="Avatar" style="width:300px;height:350px;">
+    </div>
+    <div class="flip-card-back">
+      <h1>Akshit Malhotra</h1> 
+      <p class="text-center info">Full Stack Web Developer</p>
+		<i class="about fab fa-whatsapp"></i>
+		<i class="about fab fa-facebook-square"></i>
+		<i class="about fab fa-linkedin"></i>
+      <p class="text-center info">M.no : +919814858700</p>
+      <a class="btn btn-lg btn-success" href="mailto:akshitmalhotra900@gmail.com">Contact</a>
+    </div>
+  </div>
+</div>
+</div>
+		
+	<div class="col-lg-6 d-flex align-items-center">
+		
+	<div>
+		<h2 class="name mb-3"> Akshit Malhotra</h2>
+		<p class="descp">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software.</p>
+	</div>	
+  </div>
+</div> 
+
+<div class="row mt-5 d-flex justify-content-around">
+   <div class="col-lg-6 order-lg-1 order-2 d-flex align-items-center">
+	   
+	<div>
+		<h2 class="name mb-3"> Kanav Chadha</h2>
+		<p class="descp">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software	</p>
+	</div>
+</div>	
+	
+<div class="col-lg-4 order-lg-2 order-1 hello">
+<div class="flip-card team">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img class="about" src="https://res.cloudinary.com/dzzb5loan/image/upload/v1607238557/dkywcve1w2glhlao502j.jpg" alt="Avatar" style="width:300px;height:350px;">
+    </div>
+    <div class="flip-card-back">
+      <h1>Kanav Chadha</h1> 
+      <p class="text-center info" >Full Stack Web Developer</p> 
+		<i class="about fab fa-whatsapp"></i>
+		<i class="about fab fa-facebook-square"></i>
+		<i class="about fab fa-linkedin"></i>
+      <p class="text-center info">M.no : +917986687383</p>
+      <a class="btn btn-lg btn-success" href="mailto:kanavchadha56@gmail.com">Contact</a>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+	</div>
+</div>
+
+<div class="jumbotron thank">
+	<div class="row">
+	<div class="col-lg-6 thankimg">
+		<img style='border: 3px solid black;' src="https://www.dunelondon.com/images/blogs/dune-london-aw15-campaign-triffic.jpg" class="p-1 thanks">
+	</div>
+	<div class="col-lg-6">
+		<h1 class="text-center" style='font-family:"parisienne";font-weight:bold;font-size:60px'>
+			<u>Thank You</u></h1>
+			<p style='font-family:"caveat";font-size:33px;color:white;'>
+			Thank You for visiting our website . Kindly support us and if you have any issue do write us on our contact page.	
+			</p>
+		<p style='font-family:"caveat";font-size:33px;color:white;'>
+			Visit Again..
+		</p>
+	</div>
+	</div>
+	</div>
+<%- include("partials/footer")%>

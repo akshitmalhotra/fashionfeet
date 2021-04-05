@@ -1,0 +1,380 @@
+<%- include("../partials/header") %>
+<style>
+	.jumbotron{
+		/* margin-top: 20px; */
+		/* margin-bottom:6px; */
+		background:url("https://innertouchdigital.com/wp-content/uploads/2018/10/iStock-852187968.jpg");
+		padding: 0;
+	}
+	@media(max-width: 980px){
+		.carousel-caption{
+			font-size: 2px;
+		}
+	}
+/* card */
+	* {box-sizing: border-box;}
+
+.overlay {
+  position: absolute; 
+  bottom: 0;
+  background: rgba(0,0,0, 0.68); /* Black see-through */
+  color: #f1f1f1; 
+  width: 100%;
+  height: 100%;
+  transition: all .5s ease;
+  opacity:0;
+  color: white;
+  font-size: 28px;
+  font-family:"piedra";
+  padding: 20px;
+  text-align: center;
+}
+.container-:hover .overlay{
+	border-top: 6px solid white;
+  	opacity: 1;
+}
+
+span.text-brand{
+	opacity: 0;
+	transition-delay:  0.3s;
+	transition: all 1s linear;
+}
+.container-:hover span.text-brand{
+	opacity: 1;
+}
+#carouselExampleIndicators{
+	margin-bottom: 10px;
+}
+@media(min-width: 981px){
+	.jumbotron{
+		margin-top: 0px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+	}
+	h3.company{
+		display: inline;
+		font-weight: bold;
+		padding-left: 60px;
+		border-left: 5px solid black;
+		text-shadow: 0 2px 5px black;
+		color: white;
+		font-size: 2.4em;
+	}
+	div.top-company{
+		background:url("https://innertouchdigital.com/wp-content/uploads/2018/10/iStock-852187968.jpg");
+		width: 100%;
+		margin-top: 25px;
+		opacity: 1;
+	}
+	.container-{
+		margin: 10px 0;
+	    position: relative;
+	    width: 100%;
+	    max-width: 400px;
+	    height: auto;
+	}
+
+	.image {
+		  width: 100%;
+		  height: 265px;
+	}
+}
+@media(max-width: 980px){
+	.jumbotron{
+		margin-top: 0px;
+		border-radius: 0;
+		display: flex;
+		flex-wrap: wrap;
+	}
+	h3.company{
+		display: inline;
+		font-weight: bold;
+		padding-left: 10px; 
+		border-left: 5px solid black;
+		text-shadow: 0 2px 5px black;
+		font-size: 2.1em;
+		color: white;
+	}
+	div.top-company{
+		margin-top: 25px;
+		background:url("https://innertouchdigital.com/wp-content/uploads/2018/10/iStock-852187968.jpg");
+		width: 100%;
+		border-top: 1px solid black;
+		opacity: 1;
+	}
+	.container-{
+	  position: relative;
+	  max-width: 47.2%;
+		flex: 50%;
+	}
+	.container-:nth-of-type(1){
+		margin-top: 10px;
+		margin-left: 10px;
+	}
+	.container-:nth-of-type(2){
+		margin-top: 10px;
+		margin-right: 10px;
+	}
+	.container-.last{
+		max-width: 100%;
+		flex: 100%;
+		margin: auto 10px;
+	}
+	.image {
+		  width: 100%;
+		  height: 140px;
+	}
+}	
+	
+	
+</style>
+
+	<div class="main page-wrap">
+		
+  <div id="carouselExampleIndicators" class="home-crousel mt-2 carousel slide" data-ride="carousel">
+   <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+	<a href="/sale-discounts">  <img class="d-block w-100 home-crousel" src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/shoes/March/SPW/Puma/menwmn-combinedsale-banner._CB467757019_.jpg" alt="First slide"></a>
+		<div class="carousel-caption d-block">
+  		</div>
+    </div>
+    <div class="carousel-item">
+		<a href="/sale-discounts"><img class="d-block w-100 home-crousel" src="https://cdn.grabon.in/gograbon/images/merchant/1575960889194.png" alt="Second slide"></a>
+		<div class="carousel-caption d-block">
+  		</div>
+    </div>
+    <div class="carousel-item">
+		<a href="/sale-discounts"><img class="d-block w-100 home-crousel" src="https://www.dealsfreak.com/wp-content/uploads/2018/01/nike-shoes-new-50-off.jpg" alt="Third slide"></a>
+		<div class="carousel-caption d-block">
+  		</div>
+    </div>
+  </div>
+		
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>	
+		<div class="top-company">
+			<h3 class="company">Top Companies</h3> 
+		</div>
+		<div>
+		<div class="jumbotron">
+			<div class="container-">
+				<a href="/nikeshooes">
+  <img src="https://c4.wallpaperflare.com/wallpaper/295/757/281/nike-logo-wallpaper-preview.jpg" class="image">
+			<div class="overlay"><span class="text-brand">Nike Shoes</span></div>
+				</a>
+			</div>
+			<div class="container-">
+				<a href="adidasshooes">
+  <img src="https://st2.depositphotos.com/1901857/5602/i/950/depositphotos_56027515-stock-photo-october-2014-berlin-the-logo.jpg" class="image">
+					<div class="overlay"><span class="text-brand"> Adidas Shoes</span></div>
+				</a>
+			</div>
+			<div class="container- last">
+				<a href="/jordanshooes">
+  <img src="https://images-na.ssl-images-amazon.com/images/I/61Oslb-0BYL._AC_SX425_.jpg" class="image">
+					<div class="overlay"><span class="text-brand">Jordan Shoes</span></div>
+				</a>
+			</div>				
+			</div>
+		</div>	
+			<hr>
+		
+  <div id="carouselExampleIndicators" class="home-crousel carousel slide" data-ride="carousel">
+   <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+	<a href="/highestRated"> <img class="d-block w-100 home-crousel" src="https://5.imimg.com/data5/DV/SF/MY-9601565/men-loafer-shoe-500x500.jpg" alt="First slide">	</a>
+		<div class="carousel-caption d-block">
+			<h3  class="text-center"> Highest Rated </h3>
+			<p class="text-center">  Buy less, choose well. </p>
+	  	</div>
+    </div>
+    <div class="carousel-item">
+      <a href="/highestRated"><img class="d-block w-100 home-crousel" src="https://cdn.shopify.com/s/files/1/0118/0447/5454/products/C838930_1_300x300.jpg?v=1581727426" alt="Second slide"> </a>
+		<div class="carousel-caption d-block">
+			<h3  class="text-center"> Highest Rated </h3>
+			<p class="text-center">  Buy less, choose well. </p>
+	  	</div>
+    </div>
+    <div class="carousel-item">
+		<a href="/highestRated"><img class="d-block w-100 home-crousel" src="https://images.fastcompany.net/image/upload/w_596,c_limit,q_auto:best,f_auto/wp-cms/uploads/2019/04/1-exclusive-adidas-futurecraft-loop-grinds-your-old-shoes.jpg" alt="Third slide"></a>
+		<div class="carousel-caption  d-block">
+			<h3  class="text-center"> Highest Rated </h3>
+			<p class="text-center">  Buy less, choose well. </p>
+	  	</div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>	
+		<div class="top-company">
+			<h3 class="company">Top Companies </h3>
+		</div>
+		<div class="jumbotron">
+				<div class="container-">
+					<a href="/reebokshooes">
+  <img src="
+https://i.pinimg.com/originals/5e/ac/44/5eac44ffb0e46c196109a50691337da8.jpg" class="image">
+						<div class="overlay"><span class="text-brand">Reebok Shoes</span></div>
+					</a>
+				</div>
+				<div class="container-">
+					<a href="/pumashooes">
+  <img src="https://wallpapercave.com/wp/1z39QuB.jpg" class="image">
+						<div class="overlay"><span class="text-brand">Puma Shoes</span></div>
+					</a>
+				</div>
+				<div class="container- last">
+					<a href="/batashooes">
+  <img src="https://www.assignmentpoint.com/wp-content/uploads/2013/12/bata-1.jpg" class="image">
+						<div class="overlay"><span class="text-brand">Bata Shoes</span></div>
+					</a>
+				</div>
+		  </div>
+			<hr>	
+			
+<div id="carouselExampleIndicators" class="home-crousel carousel slide" data-ride="carousel">
+   <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+		<a href="/Trending"> <img class="d-block w-100 home-crousel" src="https://2x1dks3q6aoj44bz1r1tr92f-wpengine.netdna-ssl.com/wp-content/uploads/2019/02/Beckett-Simonon-Cohen-Penny-Loafer-Box.jpg" alt="First slide"></a>
+		<div class="carousel-caption d-block">
+			<h3 class="text-center"> Trending </h3>
+			<p class="text-center"> This is My generation.</p>
+  		</div>
+    </div>
+    <div class="carousel-item">
+		<a href="/Trending"><img class="d-block w-100 home-crousel" src="https://www.gannett-cdn.com/presto/2019/02/21/USAT/3a08ef84-dbec-449a-aee3-ed072e7bec42-20190115_-_Nike_Adapt_At_NYHQ_-_Beauty_Shots_-__-32_original.jpg" alt="Second slide"></a>
+		<div class="carousel-caption d-block">
+			<h3 class="text-center"> Trending </h3>
+			<p class="text-center"> This is My generation.</p>
+  		</div>
+    </div>
+    <div class="carousel-item">
+		<a href="/Trending"> <img class="d-block w-100 home-crousel" src="https://4.imimg.com/data4/YK/OA/ANDROID-31658017/product-500x500.jpeg" alt="Third slide"></a>
+		<div class="carousel-caption d-block">
+			<h3 class="text-center"> Trending </h3>
+			<p  class="text-center"> This is My generation.</p>
+  		</div>
+    </div>
+  </div>
+		
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+</div>
+
+<div class="stripe">
+<span id="panLeft" class="panner" data-scroll-modifier='-1'><i class="fas fa-angle-double-left"></i></span>
+<span id="panRight" class="panner" data-scroll-modifier='1'><i class="fas fa-angle-double-right"></i></span>
+	<h2 class="text-center topbrands mt-5" style="font-weight: bold;">
+		MORE BRANDS
+	</h2>
+</div>
+
+<div id="container">
+    <div id="parent">
+		<div class="contentBlock"><a href="/nikeshooes"><img src="https://c4.wallpaperflare.com/wallpaper/295/757/281/nike-logo-wallpaper-preview.jpg"></a></div>
+		<div class="contentBlock"><a href="/adidasshooes"><img src="https://st2.depositphotos.com/1901857/5602/i/950/depositphotos_56027515-stock-photo-october-2014-berlin-the-logo.jpg"></a></div>
+		<div class="contentBlock"><a href="/jordanshooes"><img src="https://images-na.ssl-images-amazon.com/images/I/61Oslb-0BYL._AC_SX425_.jpg"></a></div>
+		<div class="contentBlock"><a href="/reebokshooes"><img src="https://i.pinimg.com/originals/5e/ac/44/5eac44ffb0e46c196109a50691337da8.jpg"></a></div>
+		<div class="contentBlock"><a href="#"><img src="https://i.pinimg.com/originals/4b/83/77/4b837752d3ba52e084928439a783b235.jpg"></a></div>
+		<div class="contentBlock"><a href="/batashooes"><img src="https://www.assignmentpoint.com/wp-content/uploads/2013/12/bata-1.jpg"></a></div>
+		<div class="contentBlock"><a href="/pumashooes"><img src="https://wallpapercave.com/wp/1z39QuB.jpg"></a></div>
+		<div class="contentBlock"><a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS5cpusWiG-7O-smpnBySQTEXNzjq_iz8x7_dvsangjbIdkGVVj&usqp=CAU"></a></div>
+		<div class="contentBlock"><a href="#"><img src="https://logonoid.com/images/lee-cooper-logo.png"></a></div>
+		<div class="contentBlock"><a href="#"><img src="https://www.asics.com/on/demandware.static/Sites-asics-us-Site/-/default/dwdd16255a/images/og-ASICS.jpg"></a></div>
+		<div class="contentBlock"><a href="#"><img src="https://www.logolynx.com/images/logolynx/42/421866f8682456258b19f78c66bd9880.png"></a></div>
+        
+		<div class="contentBlock"><a href="#"><img src="https://i.pinimg.com/originals/c3/52/ee/c352ee6334bf3e8f3dfc12153cdb9fb4.jpg"></a></div>
+		<div class="contentBlock"><a href="#"><img src="https://1000logos.net/wp-content/uploads/2017/08/Color-LeBron-James-logo.png"></a></div>
+			<div class="contentBlock"><a href="#"><img src="https://brandongaille.com/wp-content/uploads/2013/07/Red-Wing-Shoes-Company-Logo.jpg"></a></div>
+    </div>
+</div>	
+	<div>
+		<hr>
+	
+</div>
+		
+<script type="text/javascript">
+	// $(".container-").mouseenter(function(){
+	// 	$("div.top-company").css("opacity","1");
+	// })
+	// $(".container-").mouseleave(function(){
+	// 	$("div.top-company").css("opacity","0");
+	// })
+	
+	(function () {
+
+    var scrollHandle = 0,
+        scrollStep = 5,
+        parent = $("#container");
+	
+    //Start the scrolling process
+    $(".panner").on("mouseenter", function () {
+        var data = $(this).data('scrollModifier'),
+            direction = parseInt(data, 10);
+
+        $(this).addClass('active');
+
+        startScrolling(direction, scrollStep);
+    });
+
+    //Kill the scrolling
+    $(".panner").on("mouseleave", function () {
+        stopScrolling();
+        $(this).removeClass('active');
+    });
+
+    //Actual handling of the scrolling
+    function startScrolling(modifier, step) {
+        if (scrollHandle === 0) {
+            scrollHandle = setInterval(function () {
+                var newOffset = parent.scrollLeft() + (scrollStep * modifier);
+
+                parent.scrollLeft(newOffset);
+            }, 10);
+        }
+    }
+
+    function stopScrolling() {
+        clearInterval(scrollHandle);
+        scrollHandle = 0;
+    }
+
+}());
+</script>
+<%- include("../partials/footer") %>

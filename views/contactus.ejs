@@ -1,0 +1,63 @@
+<%- include("partials/header")%>
+<style>
+	hr{
+		background-color: black;
+	}	
+	body{
+		background: url("https://www.coldflowmechanical.com.au/wp-content/uploads/2014/08/contact-us-page-background.jpg");
+		min-height: 100vh;
+	}
+	div.cu-back{
+background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+		box-shadow: 0 2px 15px #90a0b0;
+	}
+</style>
+<div class="main page-wrap mt-3">
+	<div class="row">
+		<div class="order-2 col-12 col-lg-6 mt-3">
+		<div class="cu cu-back">	
+				<h1 class="text-center cu-head mb-3">Contact Us</h1>
+		<form action="/contactus" method="POST"> 
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input id="name" class="form-control cu"  type="text" name="name" placeholder=" Your Good Name" required>
+			</div>
+			<div class="form-group">
+				<label for="email">Email-id</label>
+				<input  id="email" class="form-control cu" type="email" name="email" placeholder="Email-id e.g. hello@world.com" required>
+			</div>
+			<div class="form-group">
+				<textarea  id="descp" class="form-control cu" name="issue" placeholder="Please Describe Your Issue"  rows="5" required></textarea>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-danger cu btn-block regs">Submit</button>
+			</div>
+		</form>
+		</div>
+		</div>
+		<div class="order-1 col-12 col-lg-6 bye">
+			<div class="text-center">
+			<h1 class="cu-tag" style="color: #ff0f37; text-shadow: 0 1px 4px #ff0f37;">
+				Don't be a Stranger
+			</h1>
+			<h1 class="cu-tag" style="color: black; text-shadow: 0 1px 4px #ff0f37;">
+				Just Say Hello
+			</h1>
+			</div>
+			<hr class="cu" style="width: 75%;">
+			<div class="text-center">
+			<p class="cu-tag" style="color: white; text-shadow: 0 1px 2px #f0f0f0;">
+				Feel free to get touch with us
+				We are always open to discussing new and creative ideas
+				with you and be a part of your <span> Vision</span>
+			</p>
+				<hr>
+			<h3 class="talk" style="color: white; text-shadow: 0 1px 3px #f0f0f0;">Feel Like Talking : </h3>
+				<p class="talk text-center" style="text-decoration: underline; color: #e8edea; text-shadow: 0 1px 2px #f0f0f0;">+9041160424 </p>
+			<hr class="cu" style="width: 100%;">
+			</div>	
+		</div>
+	</div>
+</div>
+
+<%- include("partials/footer")%>

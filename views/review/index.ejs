@@ -1,0 +1,115 @@
+<%- include("../partials/header") %>
+<style>
+	span.revhd{
+		background: green;
+		border-radius: 28px;
+		padding: 5px 8px;
+		color: white;
+	}
+	div.card-header{
+background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+	}
+	div.card-body{
+background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+	}
+	div.revauth{
+		font-weight: 550; 
+	}
+	
+	@media(min-width: 981px){
+		div.fix{
+		position: fixed;
+		}
+		div.img-box{
+		width: 310px;
+		height: 400px;
+		}
+	}
+	@media(max-width: 980px){
+		div.fix{
+			display: none;
+		}
+		div.img-box{
+			width: 350px;
+			height: 150px;
+		}
+	}
+	
+</style>
+<div class="main page-wrap mb-5">
+   
+	<h1 style="text-align: center; text-decoration: underline;"><strong>Review Page:            <%= shoe.name %></strong></h1>
+	
+	<div class="row">
+		<div class="col-lg-3">
+			<div class="fix">
+				<div class="img-box card"><img src="<%=shoe.images[0]%>"></div>
+			<h1 class="text-center mt-2" style='font-family:"piedra"'><%= shoe.name %></h1>
+				<h3 class="text-center"><i class="fas fa-rupee-sign"></i><strong> 						<%=shoe.price%> </strong> </h3>
+			</div>
+		</div>
+	 	
+		<div class="col-lg-9">
+	 		<div class="card">
+				<div class="card-header">				  
+                    <% if (shoe.rating === 0) { %>
+                    <h2>
+                        <em>No reviews yet.</em>
+                    </h2>
+                    <% } else { %>
+                    <p class="revind">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star <% if (shoe.rating > 1.5) { %> checked <% } %>"></span>
+                        <span class="fa fa-star <% if (shoe.rating > 2.5) { %> checked <% } %>"></span>
+                        <span class="fa fa-star <% if (shoe.rating > 3.5) { %> checked <% } %>"></span>
+                        <span class="fa fa-star <% if (shoe.rating > 4.5) { %> checked <% } %>"></span>
+						<strong><em>(total reviews: <%= shoe.reviews.length %>)</em></strong>
+                    </p>
+                    <h4 class="currev mb-3">
+                        Rating for this Shoe: <span  class="revhd"><strong><%= shoe.rating.toFixed(2) %></strong>  <i class="fa fa-star"></i></span>
+                    </h4>
+					<h3 class="currev"><strong>All reviews for this Shoe:</strong></h3>
+					</div>
+				  <div class="card-title">
+					  
+				  </div>
+				<div class="card-body">
+				  <div class="revcard">
+                    <% shoe.reviews.forEach(function(review){ %>
+                    <div class="row">
+                        <div class="col-12">
+                            <%- '<span class="fa fa-star checked"></span>'.repeat(review.rating) %><%- '<span class="fa fa-star"></span>'.repeat(5 - review.rating) %>
+							<div class="revauth"><h4>Review by: <strong style="color: steelblue; font-family: 'Balsamiq Sans';"><%= review.author.username %></strong></h4></div>
+                            
+                        </div>
+                        <div class="col-12">
+                            <p style="text-align: justify;" class="rev-text">
+                                <%= review.text %>
+                            </p>
+						<span style="color: grey;"><em><%= review.updatedAt.toDateString() %> </em></span>	
+							<div class="pt-4">
+                            <% if(currUser && review.author.id.equals(currUser._id)){ %>
+                            <form id="delete-form" action="/details/<%=shoe._id %>/reviews/<%=review._id %>?_method=DELETE" method="POST" style="display: inline;">
+                                <input type="submit" class="btn btn-xs btn-danger edel" value="Delete">
+                            </form>
+                            <% } %>
+							</div>	
+                        </div>
+                    </div>
+                    <hr>
+                    <% }); %>
+                    <% } %>
+                    <div>
+				</div>	
+                        <a class="btn btn-primary<% if (currUser && shoe.reviews.some(function (review) {return review.author.id.equals(currUser._id)})) { %> disabled <% } %>" href="/campage/<%= shoe._id %>/reviews/new">  Write a New Review</a>
+                    </div>
+                    <div style="margin-top: 20px;">
+						<a class="btn btn-outline-secondary revbut" href="/details/<%= shoe._id %>"><i class="fa fa-arrow-left"></i><strong> Go back</strong> </a>
+                    </div>
+                </div>
+            </div>
+		</div>
+    <!--Review section-->
+	</div>	
+</div>
+<%- include("../partials/footer") %>

@@ -1,0 +1,194 @@
+<%- include('./partials/header'); -%>
+<style>
+	body {
+  background: #eecda3;
+  background: -webkit-linear-gradient(to right, #eecda3, #ef629f);
+  background: linear-gradient(to right, #eecda3, #ef629f);
+  min-height: 100vh;
+}
+	input.btn.remove,i.fa-trash{
+		text-decoration: none;
+		color: red;
+	}
+	@media(min-width: 981px){
+		h1.display-4{
+		background: gold;
+		border-radius: 50px;
+		padding: 6px;
+		width: 65%;
+		text-shadow: 0 1px 1px rgba(0,0,0,0.25), 
+              0 2px 2px rgba(0,0,0,0.20), 
+              0 4px 4px rgba(0,0,0,0.15), 
+              0 8px 8px rgba(0,0,0,0.10),
+              0 16px 16px rgba(0,0,0,0.05);
+			margin: 25px auto;
+		}
+		div.cart-content{
+			margin: 25px;
+		}
+		
+	}
+	@media(max-width: 980px){
+		h1.display-4{
+		background: gold;
+		border-radius: 50px;
+		padding: 6px;
+		text-shadow: 0 1px 1px rgba(0,0,0,0.25), 
+              0 2px 2px rgba(0,0,0,0.20), 
+              0 4px 4px rgba(0,0,0,0.15), 
+              0 8px 8px rgba(0,0,0,0.10),
+              0 16px 16px rgba(0,0,0,0.05);
+			font-size: 2em;
+			margin: 18px auto;
+		}
+	}
+	div.table-responsive,
+	div.shadow-sm.row.rounded{
+		box-shadow: 0 1px 1px rgba(0,0,0,0.12), 
+              0 2px 2px rgba(0,0,0,0.12), 
+              0 4px 4px rgba(0,0,0,0.12), 
+              0 8px 8px rgba(0,0,0,0.12),
+              0 16px 16px rgba(0,0,0,0.12);
+	}
+	a.btn.cont-shop{
+		font-weight: bold;
+		border-radius: 30px;
+		position: relative;
+		box-shadow: -3px 16px 26px 9px rgba(0,0,0,0.22);
+		transition: 0.5s;
+	}
+	a.btn.cont-shop:hover{
+		top: -10px;
+		box-shadow: -3px 51px 37px 29px rgba(0,0,0,0.15);
+	}
+</style>
+<div class="main page-wrap">
+	<div class="px-0">
+  <!-- For demo purpose -->
+  <div class="container text-white text-center">
+    <h1 class="display-4" style="font-weight: bold;"><i class="fas fa-cart-arrow-down"></i> 	My Shopping Cart</h1>
+  </div>
+  <!-- End -->
+
+	<% if(user.cart.length === 0){ %>
+	<div class="container text-white text-center">
+    	<h3 style="font-weight: bold;"><i class="fas fa-cart-plus"></i>
+			You have no Item in Your Cart
+		</h3>
+		<a class="btn btn-primary" href="/maleshooes">Shop Now</a>
+  </div>
+	<% } else { %>	
+  <div class="pb-5">
+    <div class="">
+      <div class="row">
+        <div class="col-lg-12 bg-white rounded shadow-sm mb-5">
+
+          <!-- Shopping cart table -->
+          <div class="table-responsive cart-content">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Product</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Price</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Quantity</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Remove</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+			<% user.cart.forEach(function(item){ %>	  
+                <tr>
+                  <th scope="row" class="border-0">
+                    <div class="p-2">
+                      <img src="<%= item.image%>" alt="item" width="80" class="img-fluid rounded shadow-md">
+                      <div class=" d-inline-block align-middle">
+                        <h5 class="mb-0"> <a href="/details/<%=item.shoe%>" class="text-dark d-inline-block align-middle"><%=item.name%></a></h5>
+				<div>	<span class="text-muted font-weight-normal font-italic d-block">Size: <%= item.size %></span>
+					<span class="text-muted font-weight-normal font-italic d-block">color: <%= item.color %></span>
+				</div>	
+                      </div>
+                    </div>
+                  </th>
+                <td class="border-0 align-middle"><strong>
+					<i class="fas fa-rupee-sign"></i> <%=item.Price%></strong>
+				</td>
+                  <td class="border-0">
+					<div class="pl-4">
+					  <form action="/incQuantity/<%=item._id%>?shoeid=<%=item.shoe%>" method="POST"> 		   <button type="submit" class="btn btn-outline-success btn-sm">
+						   <i class="fas fa-plus"></i> 
+						</button>
+					  </form>
+					  
+					  <div class="pl-2">
+						<strong><%=item.quantity%></strong> 
+					  </div>
+						
+					  <form action="/decQuantity/<%=item._id%>/?shoeid=<%=item.shoe%>" method="POST">          <button type="submit" class="btn btn-outline-danger btn-sm" 
+						<%if(item.quantity === 1){%> disabled <%}%>>
+							<i class="fas fa-minus"></i>
+						</button>
+					  </form>
+					</div>  
+				  </td>
+                  <td class="border-0  align-middle">
+				  <form action="/removeItem/<%=item._id%>?_method=DELETE" method="POST">
+					<button class="btn btn-link remove" type="submit"><i class="fa fa-trash"></i>					 </button>
+				  </form>
+				  </td>
+                </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+          <!-- End -->
+        </div>
+      </div>
+		
+	<div class="text-right mr-3">
+		<a class="btn btn-warning cont-shop" href="/maleshooes"><i class="fab fa-shopify"></i> Continue Shopping</a>	
+	</div>
+	
+      <div class="row my-5 p-4 bg-white rounded shadow-sm">
+        <div class="col-lg-6">
+          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Coupon code</div>
+          <div class="p-4">
+            <p class="font-italic mb-4">If you have a coupon code, please enter it in the box below</p>
+            <div class="input-group mb-4 border rounded-pill p-2">
+              <input type="text" placeholder="Apply coupon" aria-describedby="button-addon3" class="form-control border-0">
+              <div class="input-group-append border-0">
+                <button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Apply coupon</button>
+              </div>
+            </div>
+          </div>
+          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold"></div>
+        </div>
+        <div class="col-lg-6">
+          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
+          <div class="p-4">
+            <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
+            <ul class="list-unstyled mb-4">
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong><i class="fas fa-rupee-sign"></i>         <%=user.totalPrice%></strong></li>
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and handling</strong><strong><i class="fas fa-rupee-sign"></i> 100.00</strong></li>
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong><i class="fas fa-rupee-sign"></i> 0.00</strong></li>
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
+				  <% var taxadded = user.totalPrice+100 %>
+                <h5 class="font-weight-bold"><i class="fas fa-rupee-sign"></i> 							<%=taxadded%></h5>
+              </li>
+            </ul><a href="/checkoutform" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+		<%}%>
+</div>
+</div>
+<%- include('./partials/footer'); -%>

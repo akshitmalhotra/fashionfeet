@@ -1,0 +1,99 @@
+<%- include('./partials/header'); -%>
+<style>
+	body{
+		background:url("https://wallpapercave.com/wp/wp3182433.jpg");
+		background-repeat:no-repeat;
+		background-size:cover;
+		background-position: center;
+		min-height: 100vh;
+	}
+	div.signup{
+		box-shadow: 0px 6px 27px 15px rgba(0,0,0,0.18);		
+	}
+	@media(max-width: 980px)
+	{
+		h1.reg{
+			color: white;
+			font-weight: bold;
+			font-size: 2.6em;
+			text-shadow: 0 2px 4px black;
+			margin-top: 15px;
+		}
+		input.form-control.reg{
+			font-size: 1em;
+			width: 95%;
+			height: 45px;
+		}
+		button.btn.reg{
+			font-size: 1.3em;
+			width: 95%;
+			height: 45px;
+		}
+		.form-control.fn{
+			height: 45px;
+			margin-left: auto;
+		}
+	}
+	@media(min-width: 981px)
+	{
+		.form-control.fn{
+			margin-left: auto;
+		}
+		h1.reg{
+		font-weight: bold;
+		color: white;
+		font-size: 3em;
+		margin-top: 35px;
+		text-shadow: 0 2px 6px #322323;
+	}
+		input.form-control.reg{
+			width: 40%;
+		}
+		button.btn.reg{
+			width: 40%;
+		}
+	}
+	.page-wrap{
+		min-height: 100vh;
+	}
+</style>
+<div class="page-wrap" style="text-align: center;">
+        <h1 class="reg">Sign Up Page</h1>
+        <div class="signup" style="margin: 25px auto;">
+<form action="/register" method="POST">
+	<div class="form-group">
+        <input class="form-control reg" style="margin: auto auto;" type="text" name="username" placeholder="username" required>
+    </div>
+    <div class="form-group">
+         <input class="form-control reg" style="margin: auto auto;" type="password" name="password" placeholder="password" required>
+     </div>
+	<div class="form-row">
+				<div class="col">
+				<div class="form-group">
+				<input class="form-control reg fn" type="text" name="firstName" placeholder="First Name" required>
+			</div>	
+				</div>
+				<div class="col">
+				<div class="form-group">
+				<input class="form-control reg ln" type="text" name="lastName" placeholder="Last Name" required>
+			</div>	
+				</div>
+			</div>
+			<div class="form-group">
+				<input class="form-control reg" style="margin: auto auto;" type="email" name="email" placeholder="Email-id e.g. hello@world.com" required>
+			</div>
+			<div class="form-group">
+				<input class="form-control reg" style="margin: auto auto;" type="tel" id="phone" name="phoneno" pattern="[1-9]{1}[0-9]{9}" placeholder="Phone Number" title=" 10 Digits Number " required>
+			</div>
+		<div class="form-group">
+				<input class="form-control reg" style="margin: auto auto;" type="text" name="address" placeholder="Your Address" required>
+			</div>
+	<div class="form-group">
+            <button class="btn reg btn-lg btn-primary btn-block" style="margin: auto auto;">Sign Up</button>
+    </div>
+</form>
+		</div>
+	</div>
+
+
+<%- include('./partials/footer'); -%>

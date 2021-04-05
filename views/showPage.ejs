@@ -1,0 +1,542 @@
+<%- include('partials/header') %>
+	<style>
+ul.thumb li img{
+	width:100%;
+	height: 96%;
+}
+	span.revhd{
+		background: green;
+		border-radius: 28px;
+		padding: 5px 8px;
+		color: white;
+	}
+		form.but1,form.but2{
+			width: 100%;
+		}
+@media(min-width: 981px){
+	div.fix{
+		position: fixed;
+		margin-top: 6px;
+		z-index: 100;
+	}
+	.imgbox{
+		/* position: relative; */
+		float:left;
+		width:455px;
+		height:450px;
+		margin:5px;
+		border:2px solid black;
+		z-index: 100;
+	}	
+	ul.thumb{
+	margin:0 30px;
+	padding:0;
+	display: flex;
+	flex-direction: column;
+}
+	ul.thumb li{
+	list-style:none;
+	margin:5px;
+	width:100px;
+	height:100px;
+	border:2px solid black;
+	overflow:hidden;
+}
+	div.buts{
+		width: 94%;
+		top: 100%;
+		display: flex;
+		justify-content: center;
+	}
+	input.but1,input.but2{
+		
+		height: 55px;
+		width: 100%;
+		text-align: center;
+	}
+	span.rat-stars{
+		font-size: 1.4em;
+	}
+	span.off{
+		background: gold;
+		color: black;
+		padding: 5px;
+		font-size: 0.65em;
+		border-radius: 20px;
+		font-weight: bold;
+		
+	}
+}
+@media(max-width: 980px){
+	div.buts{
+			width: 100%;
+			background-size: cover; 
+			display: flex;
+			justify-content: space-between;
+		}
+	span.rat-stars{
+		font-size: 1.1em;
+	}
+	.imgbox{
+		float:left;
+		width: 350px;
+		height: 308px;
+		margin: 5px;
+		border: 2px solid black;
+		overflow: hidden;
+	}
+	input.but1{
+		width: 100%;
+		height: 55px;
+	}	
+	input.but2{
+		width: 100%;
+		height: 55px;
+	}	
+	ul.thumb{
+	padding:0;
+	display: flex;
+	flex-direction: row;
+	float:right;
+	}
+	ul.thumb li{
+	list-style:none;
+	margin:5px;
+	width: 80px;
+	height: 70px;
+	border:2px solid black;
+	overflow:hidden;
+	}
+	span.off{
+		background: gold;
+		color: black;
+		padding: 5px;
+		font-size: 0.45em;
+		border-radius: 20px;
+		font-weight: bold;
+		
+	}
+}
+	.imgbox img{
+		width:100%;
+		height: 95%;
+	}
+	div.sizes{
+		padding: auto 5px;
+		box-shadow: 0 1px 6px grey;
+		border: 1px solid black;
+		transition: 0.4s;
+	}
+	div.sizes input.btn.btn-link{
+		color: #97b0ab;
+		text-decoration: none;
+	}
+	div.sizes:hover input.btn.btn-link{
+		color: white;
+		text-decoration: none;
+	}
+	div.sizes:hover{
+		background: #333;
+		cursor: pointer;
+	}
+	div.colors{
+		color: white;
+		text-decoration: none;
+		padding: 2px;
+		box-shadow: 0 1px 6px grey;
+		border: 1px solid black;
+		transition: 0.4s;
+	}
+	div.colors input.btn.btn-link{
+		color: black;
+		text-decoration: none;	
+	}
+	div.colors input.btn-link:hover{
+		color: black;
+		text-decoration: none;	
+	}
+		.card-header{
+			border:1px solid black;
+		}
+		.card-body{
+			border: 1px solid black;
+			font-family: 'Balsamiq Sans', cursive;
+			font-size: 1.2em;
+		}
+	div.buts input.but2{
+		background-color: #ffa30d;
+		color: white;
+	}	
+	div.buts input.but1{
+		background-color: #f7c602;
+		color: white;
+	}
+	lable.sp{
+		padding: 5px;
+		font-weight: bold;
+		background: forestgreen;
+		color: white;
+		border-radius: 20px;
+	}
+	p.price{
+		font-size: 1.8em;
+		padding: 5px;
+		font-weight: 600;
+	} 
+	div.bord{
+		padding: 5px;
+		border: 1px solid forestgreen;
+	}
+	span.size{
+		font-weight: bold;
+		font-size: 1.1em; 
+	}
+	span.color{
+		font-weight: bold;
+		font-size: 1.1em;
+	}
+	i.pull-right{
+		font-size: 1.5em;
+		font-weight: bold;
+		color: steelblue;
+	}
+	span.specs{
+		text-decoration: none;
+		font-size: 1.5em;
+		font-weight: bold;
+		color: steelblue;
+	}
+	span.descp{
+		text-decoration: none;
+		font-size: 1.5em;
+		font-weight: bold;
+		color: steelblue;
+	}
+</style>
+<div class="main page-wrap mb-5">
+	<div class="row">
+		<div class="col-lg-6">
+	<div class="fix">
+    <div class="container__">
+		<div class="imgbox show" href="<%=s.images[0]%>"> 
+			<img src="<%=s.images[0]%>" id="show-img">
+		</div>
+		<ul class="thumb">
+			<% s.images.forEach(function(img){ %>
+				<li><a target="imgbox"><img src="<%=img%>"></a></li>
+			<% }); %>
+		</ul>
+	 </div>
+		<div class="buts">
+			<% if(currUser && usercart.some(item => item.shoe == s._id) && usercart.some(item => item.size == currUser.selsize) && usercart.some(item => item.color == currUser.selcolor) ){ %>
+			<form action="/MyCart" method="GET" class="but1">
+	<input class="btn btn-lg but1" type="submit" style="font-weight: bold;" value="Go To Cart"> 
+			</form>
+			<% } else{ %>
+			<form action="/addToCart/<%=s._id%>" method="POST" class="but1">
+	<input class="btn btn-lg but1" type="submit" style="font-weight: bold;" value="Add To Cart"> 
+			</form>
+			<% } %>
+			<form action="/BuyNow/<%=s._id%>" method="GET" class="but2">
+		<input class="btn btn-lg but2" type="submit" style="font-weight: bold;" value="Buy Now"> 
+			</form>
+		</div>
+   </div>
+	</div> <!-- col -->
+		
+		<div class="col-lg-6 pr-3">   
+        <div class="rel">
+            <p class="ml-2" style='font-family:"piedra";font-size:50px;'><%=s.name%></p>
+            <lable class="sp ml-2">special price</lable>
+			<p class="price ml-2"><% if(s.discountPrice === 0 || s.discount === 0) {%>
+				Price ~ <span> <i class="fa fa-inr" aria-hidden="true"></i> <%=s.price%>
+				</span> <% } else {%>
+				Price ~ <span> <i class="fas fa-rupee-sign"></i> <%= s.discountPrice %></span>
+				<span style="text-decoration: line-through; color:#c3c9c1; font-size: 0.8em;"><%=s.price%></span>
+					<span class="off"><%= s.discount %>% off</span>
+				<% } %>
+			</p>
+            <div class="ml-3">
+                 <% if (s.rating === 0 || s.reviews.length === 0) { %>
+           <h3><em>No reviews yet.</em></h3>
+         <% } else { %>
+            <span class="rat-stars mb-4">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star <% if (s.rating > 1.5) { %> checked <% } %>"></span>
+              <span class="fa fa-star <% if (s.rating > 2.5) { %> checked <% } %>"></span>
+              <span class="fa fa-star <% if (s.rating > 3.5) { %> checked <% } %>"></span>
+              <span class="fa fa-star <% if (s.rating > 4.5) { %> checked <% } %>"></span>
+			<strong><span  class="revhd"><strong><%= s.rating.toFixed(2) %></strong>  <i 			class="fa fa-star"></i></span><em style="color: steelblue;">(reviews: <%= 			   s.reviews.length %>)</em></strong>
+              </span>
+				<%}%>
+            </div>
+            <div class="d-flex justify-content-around align-items-center my-3 py-2 bord">
+				<span class="size">  Sizes(UK/India): </span>
+                <% s.sizes.forEach(function(siz){ %>
+                    <div class="sizes" <%if(currUser && currUser.selsize == siz){%>style="background: #232323;"<%}%>>
+					<form action="/selectedSize/<%=s._id%>?size=<%=siz%>" method="POST">
+							<input class="btn btn-link" type="submit" value="<%=siz%>">
+						</form> 
+				    </div> 
+                <% }) %>
+            </div>
+            <div class="d-flex justify-content-around align-items-center mb-3 py-2 bord">
+				<span class="color">Colors:</span>
+                <% s.colors.forEach(function(col){ %>
+                    <div class="colors" <%if(currUser && currUser.selcolor == col){%>style="border: 2.6px solid #2d6fba;"<%}%>> 
+					<form action="/selectedColor/<%=s._id%>?color=<%=col%>" method="POST">
+						<input class="btn btn-link <%if(col==='black'){%>text-white<%}%>" 							type="submit" value="<%=col%>" style="background: <%=col%>">
+						</form> 
+				    </div> 
+                <% }) %>
+            </div>
+            
+        <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+			<span class="descp">Description</span> <i class="fas fa-chevron-circle-right pull-right"></i>
+        </button>
+      </h5>
+	</div>
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
+      <div class="card-body">
+        <%=s.description%>
+      </div>
+    </div>
+  </div>
+        </div>
+			
+        <div class="card my-4">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+			<span class="specs"> Specifications</span>
+			<i class="fas fa-plus pull-right"></i>
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
+      <div class="card-body">
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                  <th scope="row"></th>
+                  <td>Model Name</td>
+                  <td><%= s.specifications.modelName%></td>
+                </tr>
+                <tr>
+                  <th scope="row"></th>
+                  <td>Material</td>
+                  <td><%= s.specifications.material%></td>
+                </tr>
+                <tr>
+                  <th scope="row"></th>
+                  <td>Occasion</td>
+                  <td><%= s.specifications.Occasion%></td>
+                </tr>
+                <tr>
+                  <th scope="row"></th>
+                  <td>Sole Material</td>
+                  <td><%= s.specifications.soleMaterial%></td>
+                </tr>
+                <tr>
+                  <th scope="row"></th>
+                  <td>Closure</td>
+                  <td><%= s.specifications.Closure%></td>
+                </tr>
+                <tr>
+                  <th scope="row"></th>
+                  <td>Weight (gm)</td>
+                  <td><%= s.specifications.weight%></td>
+                </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+
+ <!-- reviews -->
+	<div class="card reviews mt-3">
+       <div class="card-body">
+		   <h2 style="font-weight: bold; color: #2a3233;"> Ratings and Reviews </h2>
+          <% if (s.rating === 0 || s.reviews.length === 0) { %>
+           <h3><em>No reviews yet.</em></h3>
+         <% } else { %>
+            <span class="rat-stars mb-4">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star <% if (s.rating > 1.5) { %> checked <% } %>"></span>
+              <span class="fa fa-star <% if (s.rating > 2.5) { %> checked <% } %>"></span>
+              <span class="fa fa-star <% if (s.rating > 3.5) { %> checked <% } %>"></span>
+              <span class="fa fa-star <% if (s.rating > 4.5) { %> checked <% } %>"></span>
+			<strong><em style="color: steelblue;">(total reviews: <%= 						s.reviews.length %>)</em></strong>
+              </span>
+                    <h5 class="mb-3">
+                        Rating for this Shoe: <span  class="revhd"><strong><%= s.rating.toFixed(2) %></strong>  <i class="fa fa-star"></i></span>
+                    </h5>
+                    <h4 class="revhd">Latest reviews for this Shoe:</h4>
+                    <hr style="margin-top: 0;">
+					<!-- first five reviews -->
+                    <% s.reviews.slice(0, 5).forEach(function(review){ %>
+                    <div class="row">
+                        <div class="col-12">
+							<span class="ratstar">
+                            <%- '<span class="fa fa-star checked"></span>'.repeat(review.rating) %> <%- '<span class="fa fa-star"></span>'.repeat(5 - review.rating) %>          </span>
+							<div><h5 class="revby"> Review by: <strong style="text-decoration: underline; color: #4f8bbd;"> <%= review.author.username %> - </strong></h5></div>
+                        </div>
+                        <div class="col-12">
+                            <p class="rev-text" style="text-align: justify; word-wrap: break-word;">               <%= review.text %>  </p>
+						<span class="revdate"><em style="color: grey;"><%= review.updatedAt.toDateString() %></em></span>	
+						<div class="pull-right">	
+                            <% if(currUser && review.author.id.equals(currUser._id)){ %>
+                            <form id="delete-form" action="/details/<%=s._id %>/reviews/<%=review._id %>?_method=DELETE" method="POST" style="display: inline;">
+                             <input type="submit" class="btn btn-xs btn-danger tr" value="Delete">
+                            </form>
+                            <% } %>
+							</div>	
+                        </div>
+
+                    </div>
+				<div style="font-size: 2em;">			   
+                    <hr>
+		   		</div>	
+                    <% }); %>
+                    <div style="margin-bottom: 10px;">
+                        <h4 class="allrev"><a href="/<%= s._id %>/reviews"><i class="fa fa-search" aria-hidden="true"></i> See all reviews</a></h4>
+                    </div>
+                    <% } %>
+                    <div>
+                        <a class="mt-5 btn btn-primary btn-lg newrev <% if (currUser && s.reviews.some(function (review) {return review.author.id.equals(currUser._id)})) { %> disabled <% } %>" href="/<%= s._id %>/new">Write a New Review</a>
+                    </div>
+                </div>
+            </div>
+	<!-- /reviews		 -->
+
+	</div> <!-- col -->
+  </div><!-- row -->
+	
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.thumb img').mouseover(function(e){
+			e.preventDefault();
+			$('.imgbox img').attr("src",$(this).attr("src"))
+			$('.imgbox a').attr("href",$(this).attr("src"))
+		})
+	})
+	
+// 	============================================================================================
+
+;(function($) {
+    $.fn.zoomImage = function(paras) {
+        var defaultParas = {
+            layerW: 100,
+            layerH: 100,
+            layerOpacity: 0.2,
+            layerBgc: '#000',
+            showPanelW: 500,
+            showPanelH: 500,
+            marginL: 12,
+            marginT: -2 
+        };
+
+        paras = $.extend({}, defaultParas, paras);
+
+        $(this).each(function() {
+            var self = $(this).css({position: 'relative'});
+            var selfOffset = self.offset();
+            var imageW = self.width();
+            var imageH = self.height();
+
+            self.find('img').css({
+                width: '100%',
+                height: '100%',
+            });
+			
+            var wTimes = paras.showPanelW / paras.layerW;
+            var hTimes = paras.showPanelH / paras.layerH;
+			
+            var img = $('<img>').attr('src', self.attr("href")).css({
+                position: 'absolute',
+                left: '0',
+                top: '0',
+				zIndex: '10000',
+                width: imageW * wTimes,
+                height: imageH * hTimes
+            }).attr('id', 'big-img');
+
+            var layer = $('<div>').css({
+                display: 'none',
+                position: 'absolute',
+                left: '0',
+                top: '0',
+				zIndex: '10000',
+                backgroundColor: paras.layerBgc,
+                width: paras.layerW,
+                height: paras.layerH,
+                opacity: paras.layerOpacity,
+                border: '1px solid #ccc',
+                cursor: 'crosshair'
+            });
+
+            var showPanel = $('<div>').css({
+                display: 'none',
+                position: 'absolute',
+                overflow: 'hidden',
+				zIndex: '10000',
+                left: imageW + paras.marginL,
+                top: paras.marginT,
+                width: paras.showPanelW,
+                height: paras.showPanelH
+            }).append(img);
+
+            self.append(layer).append(showPanel);
+
+            self.on('mousemove', function(e) {
+                var x = e.pageX - selfOffset.left;
+                var y = e.pageY - selfOffset.top;
+
+                if(x <= paras.layerW / 2) {
+                    x = 0;
+                }else if(x >= imageW - paras.layerW / 2) {
+                    x = imageW - paras.layerW;
+                }else {
+                    x = x - paras.layerW / 2;
+                }
+
+                if(y < paras.layerH / 2) {
+                    y = 0;
+                } else if(y >= imageH - paras.layerH / 2) {
+                    y = imageH - paras.layerH;
+                } else {
+                    y = y - paras.layerH / 2;
+                }
+
+                layer.css({
+                    left: x,
+                    top: y
+                });
+
+                img.css({
+                    left: -x * wTimes,
+                    top: -y * hTimes
+                });
+            }).on('mouseenter', function() {
+                layer.show();
+                showPanel.show();
+            }).on('mouseleave', function() {
+                layer.hide();
+                showPanel.hide();
+            });
+        });
+    }
+})(jQuery);
+
+// 	============================================================================================
+	$('.show').zoomImage();
+</script>
+
+
+<%- include('partials/footer') %>

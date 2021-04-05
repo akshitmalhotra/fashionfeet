@@ -1,0 +1,165 @@
+<%- include('../partials/header'); -%>
+<style>
+	.dropdown:hover .dropdown-menu, .btn-group:hover .dropdown-menu{
+        display: block;
+    }
+    .dropdown-menu{
+        margin-top: 0;
+    }
+    .dropdown-toggle{
+        margin-bottom: 2px;
+    }
+    .navbar .dropdown-toggle, .nav-tabs .dropdown-toggle{
+        margin-bottom: 0;
+    }
+	.dropdown-menu{
+		background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+		font-family:"caveat";
+		font-size:22px;
+		font-weight:bold;
+	}
+	.dropdown-item:hover{
+		padding-left: 0;
+		transition: 0.5s;
+	}
+	.dropdown-item:hover{
+		text-shadow: 0 1px 2px black;
+		padding-left: 35px;
+		font-size: 1.1em;
+		color: black;
+	}
+/* 	dropdowns end*/
+	.jumbotron h1{
+		font-family:"piedra";
+	}
+	div.sizes{
+		padding: 4px 12px;
+		box-shadow: 0 1px 6px grey;
+		border: 1px solid black;
+		transition: 0.4s;
+	}
+	div.sizes:hover{
+		background: #333;
+		color: white;
+	}
+	@media(min-width: 981px){
+		img.img-logo{
+			width:260px;
+			height:160px;
+		}
+		img.img-logo.mob{
+			display: none;
+		}
+	}
+	@media(max-width: 980px){
+		img.img-logo.mob{
+			width: 60px;
+			height: 55px;
+			display: inline-block;
+		}	
+		img.img-logo{
+			display: none;
+		}
+		p.brand-text{
+			line-height: 1.05
+		}
+	}
+	.dropdown-filter{
+		position: fixed;
+		top: 16%;
+		float: right;
+		right: -32px;
+		transform: rotate(90deg);
+		z-index: 100;
+		transition: 0.5s;
+		background-color: #366587;
+		border-radius:50%;
+	}
+	.dropdown-filter:hover{
+		right: 0;
+		transform: rotate(360deg);
+	}
+</style>
+<div class="">
+		<button class="btn dropdown-toggle dropdown-filter"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<span id="filter">Filter</span>
+		</button>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/jordanshooes?low=2000&high=3000">2000 - 3000</a>
+          <a class="dropdown-item" href="/jordanshooes?low=3000&high=4000">3000 - 4000</a>
+          <a class="dropdown-item" href="/jordanshooes?low=4000&high=5000">4000 - 5000</a>
+          <a class="dropdown-item" href="/jordanshooes?low=5000&high=20000">5000 and above</a>
+			<div class="dropdown-divider"></div>
+		   <a class="dropdown-item" href="/jordanshooes?sortby=price:asc">Price -- low to high</a>
+          <a class="dropdown-item" href="/jordanshooes?sortby=price:dec">Price -- high to low</a>
+          <a class="dropdown-item" href="/jordanshooes?sortby=rating:dec">Popularity</a>	
+        </div>
+	</div>
+
+<div class="main page-wrap mb-5">
+
+<div class="jumbotron mt-2 p-3">
+	<div class="row d-flex justify-content-between">
+		<div class="col-lg-8 col-12  hello">
+			<h1>Jordan Shoes <img src="https://i.pinimg.com/originals/95/7e/8c/957e8cf5423bbe78b8c8225149907847.jpg" class=" img-logo mob ml-2"></h1>
+			<p>
+				Stamped with the mark of a legend, our range of men's Jordan trainers and clothing honour His Royal Airness wherever you wear them. First introduced 34 years ago in 1984 exclusively for Michael Jordan himself, the sneakers were then made available to the public in late ’84.
+			</p>
+		</div>
+		<div class="col-lg-4 col-0 hello">
+			<img src="https://i.pinimg.com/originals/95/7e/8c/957e8cf5423bbe78b8c8225149907847.jpg" class=" img-logo">
+		</div>
+	</div>
+	<div class="navbar-brand filter text-center">
+				
+	</div>
+</div>	
+	
+  <div class="row">
+	<% shoes.forEach(function(s){ %>		
+	<div class="col-lg-4 col-12">
+	<div class="container_">
+		<div class="card_">  <a href="/details/<%=s._id%>">
+			<div class="imgbx">
+				<img src="<%=s.images[0] %>">
+			</div></a>
+			<div class="contentbx"> <a href="/details/<%=s._id%>">
+				<h2> <%=s.name%> </h2></a>
+				<h4>
+				Price~ <span> <%=s.price%> <i class="fa fa-inr" aria-hidden="true"></i>				</span> </h4>
+				<% if (s.rating === 0 || s.reviews.length === 0) { %>
+           <div><em></em></div>
+         <% } else { %>
+            <span class="rat-stars mb-4 ">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star <% if (s.rating > 1.5) { %> checked <% } %>"></span>
+              <span class="fa fa-star <% if (s.rating > 2.5) { %> checked <% } %>"></span>
+              <span class="fa fa-star <% if (s.rating > 3.5) { %> checked <% } %>"></span>
+              <span class="fa fa-star <% if (s.rating > 4.5) { %> checked <% } %>"></span>
+				<strong><em style="color: steelblue;">(reviews: <%= 			   s.reviews.length %>)</em></strong>
+              </span>
+				<%}%>
+			
+				<a class="det"> 
+				<div class="d-flex justify-content-around align-items-center bord">
+					<span> Sizes:</span><% s.sizes.forEach(function(siz){ %>
+                    <div class="sizes"> <%=siz%> </div> 
+                <% }) %> </div> 
+				<div class="d-flex justify-content-around align-items-center mb-3 py-2 bord">
+				<span class="color">Colors:</span>
+                <% s.colors.forEach(function(col){ %>
+                    <div class="sizes"> <%=col%> </div> 
+                <% }) %>	
+            	</div>
+				</a>
+				
+			</div>
+		</div> 
+		
+	 </div>
+		
+	</div> 
+		<%  }); %>	
+</div>
+</div>
+<%- include('../partials/footer'); -%>
